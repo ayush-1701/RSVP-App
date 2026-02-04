@@ -1,0 +1,46 @@
+@layer components {
+  .btn-primary {
+    @apply bg-black text-white px-5 py-2 rounded-lg font-medium hover:bg-gray-800 transition;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-300 px-5 py-2 rounded-lg hover:bg-gray-100 transition;
+  }
+
+  .input {
+    @apply w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200;
+  }
+
+  .badge-yes {
+    @apply bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs;
+  }
+
+  .badge-no {
+    @apply bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs;
+  }
+
+  .badge-maybe {
+    @apply bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs;
+  }
+
+  .floral-border {
+    background:
+      linear-gradient(to right, #c6a34f 2px, transparent 2px),
+      linear-gradient(to left, #c6a34f 2px, transparent 2px),
+      linear-gradient(to bottom, #c6a34f 2px, transparent 2px),
+      linear-gradient(to top, #c6a34f 2px, transparent 2px);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .floral-bg {
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(198,163,79,0.08) 2px, transparent 2px),
+      radial-gradient(circle at 90% 90%, rgba(198,163,79,0.08) 2px, transparent 2px);
+    background-size: 120px 120px;
+  }
+}
