@@ -12,5 +12,5 @@ app.add_middleware(
 )
 
 # app.include_router(rsvp.router, prefix="/rsvp", tags=["RSVP"])
-app.include_router(rsvp.router, prefix="/rsvp", tags=["RSVP"])
+app.include_router(rsvp.router, prefix="/rsvp")
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])

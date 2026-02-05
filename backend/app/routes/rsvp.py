@@ -6,12 +6,25 @@ router = APIRouter()
 
 @router.post("/")
 def create_rsvp(data: RSVPCreate):
-    response = supabase.table("rsvps").insert(data.dict()).execute()
 
-    if response.data is None:
-        raise HTTPException(status_code=400, detail="Insert failed")
+    if not data.contact.isdigit() or len(data.contact) != 10:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid phone number"
+        )
 
-    return {
-        "success": True,
-        "rsvp_id": response.data[0]["id"]
+    payload = {
+        "name": data.name,
+        "contact": data.contact,
+        "status": data.status,
+        "guests": data.guests,
+        "event_id": data.event_id,
+        # 🔥 FIX IS HERE
+        "arrival_time": data.arrival_time if data.arrival_time else None
     }
+    
+    try:
+        response = supabase.table("rsvps").insert(payload).execute()
+        return {"success": True, "data": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

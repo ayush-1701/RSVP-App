@@ -1,10 +1,10 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from typing import Optional
 
 class RSVPCreate(BaseModel):
-    event_id: str
     name: str
     contact: str
-    status: str  # yes | no | maybe
-    guests: int = 0
-    message: Optional[str] = None
+    status: str
+    guests: int
+    arrival_time: Optional[str] = None
+    event_id: str
