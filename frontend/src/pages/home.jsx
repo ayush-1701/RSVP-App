@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import invitation from "../assets/invitation_final.png";
+// import invitation from "../assets/Invitation_final.png";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
 
         {/* Invitation Image */}
         <img
-          src={invitation}
+          src="/Invitation_final.png"
           alt="House Warming Invitation"
           className="w-full rounded-xl shadow-lg"
         />
