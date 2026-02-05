@@ -18,47 +18,65 @@ export default function Home() {
   );
 }
 
+function haptic() {
+  if (navigator.vibrate) {
+    navigator.vibrate(20); // subtle haptic
+  }
+}
+
 function FloatingActions() {
   const shareText = encodeURIComponent(
     "You're invited to our House Warming Ceremony 🪔✨\n\n" +
-    "Please RSVP here:\n" +
-    window.location.origin
+      "Please RSVP here:\n" +
+      window.location.origin
   );
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3 md:hidden">
-      
-      {/* WhatsApp Share */}
+    <div
+      className="
+        fixed bottom-4 left-1/2 -translate-x-1/2
+        z-50
+        md:hidden
+        flex items-center gap-3
+        bg-white/80 backdrop-blur
+        px-3 py-2
+        rounded-full
+        shadow-lg
+      "
+    >
+      {/* Share */}
       <a
+        onClick={haptic}
         href={`https://wa.me/?text=${shareText}`}
         target="_blank"
         rel="noopener noreferrer"
         className="
+          text-sm
+          px-3 py-1.5
+          rounded-full
           bg-green-600 text-white
-          px-4 py-3 rounded-full
-          shadow-lg
-          font-semibold
+          font-medium
           hover:bg-green-700
           transition
-          flex items-center gap-2
         "
       >
         🔗 Share
       </a>
 
-      {/* Google Maps */}
+      {/* Location */}
       <a
+        onClick={haptic}
         href="https://maps.app.goo.gl/fLWDEgWatH8fLUvc9"
         target="_blank"
         rel="noopener noreferrer"
         className="
+          text-sm
+          px-3 py-1.5
+          rounded-full
           bg-blue-600 text-white
-          px-4 py-3 rounded-full
-          shadow-lg
-          font-semibold
+          font-medium
           hover:bg-blue-700
           transition
-          flex items-center gap-2
         "
       >
         📍 Location
@@ -66,15 +84,18 @@ function FloatingActions() {
 
       {/* RSVP */}
       <Link
+        onClick={haptic}
         to="/rsvp"
         className="
+          text-sm
+          px-4 py-1.5
+          rounded-full
           bg-amber-600 text-white
-          px-5 py-3 rounded-full
-          shadow-lg
           font-semibold
           hover:bg-amber-700
           transition
-          text-center
+          animate-pulse
+          shadow-[0_0_10px_rgba(251,191,36,0.6)]
         "
       >
         RSVP
