@@ -18,30 +18,29 @@ export default function Home() {
   );
 }
 
-function haptic() {
-  if (navigator.vibrate) {
-    navigator.vibrate(20); // subtle haptic
-  }
-}
-
 function FloatingActions() {
+  const haptic = () => {
+    if (navigator.vibrate) navigator.vibrate(20);
+  };
+
   const shareText = encodeURIComponent(
     "You're invited to our House Warming Ceremony 🪔✨\n\n" +
       "Please RSVP here:\n" +
       window.location.origin
   );
 
+  const baseBtn =
+    "flex items-center justify-center gap-2 " +
+    "h-11 min-w-[96px] px-4 rounded-full " +
+    "text-sm font-medium text-white " +
+    "shadow-md transition active:scale-95";
+
   return (
     <div
       className="
         fixed bottom-4 left-1/2 -translate-x-1/2
-        z-50
-        md:hidden
-        flex items-center gap-3
-        bg-white/80 backdrop-blur
-        px-3 py-2
-        rounded-full
-        shadow-lg
+        z-50 md:hidden
+        flex gap-3
       "
     >
       {/* Share */}
@@ -50,17 +49,9 @@ function FloatingActions() {
         href={`https://wa.me/?text=${shareText}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="
-          text-sm
-          px-3 py-1.5
-          rounded-full
-          bg-green-600 text-white
-          font-medium
-          hover:bg-green-700
-          transition
-        "
+        className={`${baseBtn} bg-green-600 hover:bg-green-700`}
       >
-        🔗 Share
+        🔗<span>Share</span>
       </a>
 
       {/* Location */}
@@ -69,37 +60,24 @@ function FloatingActions() {
         href="https://maps.app.goo.gl/fLWDEgWatH8fLUvc9"
         target="_blank"
         rel="noopener noreferrer"
-        className="
-          text-sm
-          px-3 py-1.5
-          rounded-full
-          bg-blue-600 text-white
-          font-medium
-          hover:bg-blue-700
-          transition
-        "
+        className={`${baseBtn} bg-blue-600 hover:bg-blue-700`}
       >
-        📍 Location
+        📍<span>Location</span>
       </a>
 
       {/* RSVP */}
-      <Link
+      <a
         onClick={haptic}
-        to="/rsvp"
-        className="
-          text-sm
-          px-4 py-1.5
-          rounded-full
-          bg-amber-600 text-white
-          font-semibold
-          hover:bg-amber-700
-          transition
+        href="/rsvp"
+        className={`
+          ${baseBtn}
+          bg-amber-600 hover:bg-amber-700
           animate-pulse
-          shadow-[0_0_10px_rgba(251,191,36,0.6)]
-        "
+          shadow-[0_0_14px_rgba(251,191,36,0.5)]
+        `}
       >
-        RSVP
-      </Link>
+        📝<span>RSVP</span>
+      </a>
     </div>
   );
 }
