@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+
 
 export default function Home() {
+  useEffect(() => {
+    // Wake up backend (Render cold start prevention)
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/health/ping`).catch(() => {
+      // ignore errors – this is best-effort only
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#fdfaf5] flex justify-center py-6 relative">
       <div className="relative w-full max-w-[420px]">

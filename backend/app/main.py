@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import rsvp, admin
+from app.routes import rsvp, admin, health
 
 app = FastAPI(title="RSVP API")
 
@@ -14,3 +14,4 @@ app.add_middleware(
 # app.include_router(rsvp.router, prefix="/rsvp", tags=["RSVP"])
 app.include_router(rsvp.router, prefix="/rsvp")
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])
+app.include_router(health.router, prefix="/health")

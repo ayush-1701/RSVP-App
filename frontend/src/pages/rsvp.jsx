@@ -2,13 +2,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import confetti from "canvas-confetti";
-
+import { useEffect } from "react";
 
 const EVENT_ID = "64fb308d-75d2-4b15-aa14-de50ee35950b";
 
 export default function RSVP() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Wake up backend (Render cold start prevention)
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/health/ping`).catch(() => {
+      // ignore errors – this is best-effort only
+    });
+  }, []);
+
 
   const [form, setForm] = useState({
     name: "",
