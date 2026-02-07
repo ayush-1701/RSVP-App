@@ -47,48 +47,70 @@ function FloatingActions() {
     "shadow-md transition active:scale-95";
 
   return (
-    <div
-      className="
-        fixed bottom-4 left-1/2 -translate-x-1/2
-        z-50 md:hidden
-        flex gap-3
-      "
-    >
-      {/* Share */}
-      <a
-        onClick={haptic}
-        href={`https://wa.me/?text=${shareText}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${baseBtn} bg-green-600 hover:bg-green-700`}
+    <>
+      <div
+        className="
+          fixed bottom-4 left-1/2 -translate-x-1/2
+          z-50 md:hidden
+          flex gap-3
+        "
       >
-        🔗<span>Share</span>
-      </a>
+        {/* Share */}
+        <a
+          onClick={haptic}
+          href={`https://wa.me/?text=${shareText}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${baseBtn} bg-green-600 hover:bg-green-700`}
+        >
+          🔗<span>Share</span>
+        </a>
 
-      {/* Location */}
-      <a
-        onClick={haptic}
-        href="https://maps.app.goo.gl/fLWDEgWatH8fLUvc9"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${baseBtn} bg-blue-600 hover:bg-blue-700`}
-      >
-        📍<span>Location</span>
-      </a>
+        {/* Location */}
+        <a
+          onClick={haptic}
+          href="https://maps.app.goo.gl/fLWDEgWatH8fLUvc9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${baseBtn} bg-blue-600 hover:bg-blue-700`}
+        >
+          📍<span>Location</span>
+        </a>
 
-      {/* RSVP */}
-      <a
-        onClick={haptic}
-        href="/rsvp"
-        className={`
-          ${baseBtn}
+        {/* RSVP */}
+        <a
+          onClick={haptic}
+          href="/rsvp"
+          className={`
+            ${baseBtn}
+            bg-amber-600 hover:bg-amber-700
+            animate-pulse
+            shadow-[0_0_14px_rgba(251,191,36,0.5)]
+          `}
+        >
+          📝<span>RSVP</span>
+        </a>
+      </div>
+
+      {/* DESKTOP RSVP BUTTON */}
+      <Link
+        to="/rsvp"
+        className="
+          hidden md:flex
+          fixed right-6 top-1/2 -translate-y-1/2 z-40
           bg-amber-600 hover:bg-amber-700
+          text-white font-semibold
+          px-6 py-3 rounded-full
+          shadow-xl
+          transition
           animate-pulse
-          shadow-[0_0_14px_rgba(251,191,36,0.5)]
-        `}
+        "
       >
-        📝<span>RSVP</span>
-      </a>
-    </div>
+        🎉 RSVP
+      </Link>
+    </>
+
+    
+    
   );
 }
