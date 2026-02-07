@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
-
-
 export default function Home() {
   useEffect(() => {
     // Wake up backend (Render cold start prevention)
