@@ -132,7 +132,7 @@ export default function RSVP() {
           >
             <option value="">Please select an option</option>
             <option value="YES">Yes, I will attend 😊</option>
-            <option value="MAYBE">Maybe 🤞</option>
+            {/* <option value="MAYBE">Maybe 🤞</option> */}
             <option value="NO">No, I won’t be able to attend 😔</option>
           </select>
         </div>
